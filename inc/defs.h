@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include "queen.h"
+//条件宏
 #define MAX_LINE 80
 #define MAX_CHAR 10
 #define MAXPROCESSNUM 4
@@ -18,7 +19,7 @@
 #define PIPE_WRITE 1
 #define USER "USER"
 #define LIB_FUN_NUM 17
-
+//颜色宏
 #define COL(x) "\033[;" #x "m"
 #define RED COL(31)
 #define GREEN COL(32)
@@ -28,6 +29,7 @@
 #define CYAN COL(36)
 #define WHITE COL(0)
 
+/// @brief 用以保存每个命令的结构体
 struct Arg_List
 {
     char *name; // 命令名称
@@ -51,7 +53,7 @@ struct Arg_List
     char *opt[MAXOPTS];
 };
 
-// 全局变量
+/// @brief 全局变量
 char *result_out;
 int result_out_count;
 int com_num;
@@ -62,7 +64,8 @@ int *arg_count;
 char *uname;
 struct Command_QUEEN history_queen;
 struct Arg_List arg[MAXPROCESSNUM];
-int fd[2];
+int TX_FD[2];
+int RX_FD[2];
 
 // queen.c
 void init_queen(struct Command_QUEEN *queen);
@@ -103,7 +106,7 @@ int wc(int index);
 int whoami(int index);
 int shell_exec(int index);
 
-int exec_function(int i, int j);
+void exec_function(int i, int j);
 int init_pipe_process();
 void output(int index);
 //

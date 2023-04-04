@@ -2,6 +2,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include "error_code.h"
 struct message {
 
 int lines;
@@ -15,13 +16,7 @@ int size;
 int chars;
 }info;
 
-void error_print(char str[])
-{
-
-    printf("Error:%s", str);
-}
-
-void init(char filename[])
+void init(char filename[],int index)
 {
 
     struct stat get_message = {};
@@ -31,10 +26,8 @@ void init(char filename[])
     int ret_stat = stat(filename, &get_message); /*用stat函数读取filenmae文件的信息，并将结果写到get_message结构体中*/
 
     if (ret_stat == -1)
-    { // stat函数不出错则进行信息输出
-
-        error_print(filename);
-
+    { 
+        error_printf(ARG_CONENT_ERROR,index);
         return;
     }
 
@@ -44,7 +37,7 @@ void init(char filename[])
 
     if (S_ISDIR(mode)) // 如果是目录，输出错误
 
-        printf("Error %s is dir\n0\t0\t0\t%s", filename, filename);
+        error_printf(ARG_CONENT_ERROR,index);
 
     else
     {
@@ -104,9 +97,6 @@ void init(char filename[])
         fclose(fp);
     }
 }
-
-// 计算键盘输入内容的相关信息，即参数中没有指定要打开的文件
-
 void EmptyFile()
 {
 
@@ -166,13 +156,13 @@ void EmptyFile()
 int wc(int index)
 {
 
-    if (*arg_count == 2)
+    if (arg[index].opts == 2)
     {
 
-        if (args[1][0] != '-')
+        if (arg[index].opt[0] != '-')
         {
 
-            init(args[1]);
+            init(arg[index].opt[0]);
 
             printf("%d %d %d %s\n", info.lines, info.words, info.size, args[1]);
 

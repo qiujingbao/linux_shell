@@ -1,3 +1,13 @@
+/*
+ * @Author: “qiujingbao” “qiujingbao@dlmu.edu.cn”
+ * @Date: 2023-03-30 15:19:06
+ * @LastEditors: “qiujingbao” “qiujingbao@dlmu.edu.cn”
+ * @LastEditTime: 2023-04-04 14:37:13
+ * @FilePath: /linux_shell/src/error.c
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by qiujingbao, All Rights Reserved. 
+ */
 #include "error_code.h"
 #include "defs.h"
 #include <error.h>
@@ -6,12 +16,12 @@ void error_printf(int error_code, int index)
 {
     // 清空其他输出
     delete_result();
-    char *error_buf = (char *)malloc(sizeof(char) * MAX_RESULT_BUF);
     char *sys_error = NULL;
+    char buf[1024]={'\0'};
     switch (error_code)
     {
     case PATH_ERROR:
-        sprintf(error_buf, RED "路径错误\n" WHITE);
+        sprintf(buf, RED "路径错误\n" WHITE);
         break;
     case ARG_NUM_ERROR:
         /* code */
@@ -27,10 +37,12 @@ void error_printf(int error_code, int index)
     }
     if (sys_error != NULL)
     {
-        free(error_buf);
         build_result(sys_error, strlen(sys_error));
         build_result("\n",strlen("\n"));
     }
-
+    else
+    {
+        build_result(buf,strlen(buf));
+    }
     output(index);
 }
