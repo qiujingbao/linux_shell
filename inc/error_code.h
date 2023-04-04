@@ -1,0 +1,6 @@
+#define PATH_ERROR 1
+#define ARG_NUM_ERROR 2
+#define ARG_CONENT_ERROR 3
+#define OPEN_DIR_ERROR 4
+#define ERROR_BY_SYS 5
+#define CONVERT_ERROR 6

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../inc/defs.h
+stdio.h
+-
+unistd.h
+-
+stdlib.h
+-
+string.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+unistd.h
+-
+queen.h
+../inc/queen.h
+
+../inc/error_code.h
+
+../inc/queen.h
+
+/home/ubuntu/linux_shell/main.c
+defs.h
+/home/ubuntu/linux_shell/defs.h
+error_code.h
+/home/ubuntu/linux_shell/error_code.h
+
