@@ -2,159 +2,183 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "error_code.h"
-struct message {
-
-int lines;
-
-int words;
-
-int max_line_length;
-
-int size;
-
-int chars;
-}info;
-
-void init(char filename[],int index)
+struct TextStatistics
 {
-
-    struct stat get_message = {};
-
-    FILE *fp;
-
-    int ret_stat = stat(filename, &get_message); /*用stat函数读取filenmae文件的信息，并将结果写到get_message结构体中*/
-
-    if (ret_stat == -1)
-    { 
-        error_printf(ARG_CONENT_ERROR,index);
-        return;
+    int lines;           // 行数
+    int words;           // 单词数
+    int max_line_length; // 最长的一个单词的长度
+    int size;            // 大小
+    int chars;           // 字符数
+};
+struct TextStatistics info;
+int file2sattictics(char *path, int index)
+{
+    struct stat st;
+    if (stat(path, &st) == -1)
+    {
+        error_printf(PATH_ERROR, index);
+        return -1;
     }
-
-    mode_t mode = get_message.st_mode; // 接收文件信息，用于下面判断是不是目录
-
     int length = 0;
 
-    if (S_ISDIR(mode)) // 如果是目录，输出错误
-
-        error_printf(ARG_CONENT_ERROR,index);
-
+    if (S_ISDIR(st.st_mode)) // 如果是目录，输出错误
+    {
+        error_printf(PATH_ERROR, index);
+        return -1;
+    }
     else
     {
 
-        info.size = get_message.st_size; // 文件字节大小 wc -c
-
-        fp = fopen(filename, "r"); // 以只读方式打开指定文件
-
-        char ch;
+        info.size = st.st_size; // 文件字节大小 wc -c
+        int fd;
+        if ((fd = open(path, O_RDONLY)) == -1)
+        {
+            error_printf(PATH_ERROR, index);
+            return -1;
+        }
+        char buf;
 
         int flag = 0;
 
-        while ((ch = fgetc(fp)) != EOF)
-        { // 一直读到文件尾
-
+        while (read(fd, &buf, 1) != 0)
+        {
             info.chars++; // 字符数加1 wc -m
-
-            if (ch != '\n')
+            if (buf != '\n')
             {
-
                 length++; // 记录当前行的长度 wc -L
             }
-
-            if (ch == '\n')
+            if (buf == '\n')
             {
-
                 info.lines++; // 行数加1 wc -l
-
                 if (length > info.max_line_length)
-
                     info.max_line_length = length; // 更新最大长度
-
                 length = 0;
             }
-
-            if (ch == '\t' || ch == ' ' || ch == '\n')
+            if (buf == '\t' || buf == ' ' || buf == '\n')
             {
-
                 flag = 0; // 计算单词数 wc -w
-
                 continue;
             }
-
             else
             {
-
                 if (flag == 0)
                 {
-
                     info.words++; // 计算单词数 wc -w
-
                     flag = 1;
                 }
             }
+            if (info.words == 1 && length > info.max_line_length)
+                info.max_line_length = length;
         }
-
-        fclose(fp);
+        close(fd);
     }
 }
-void EmptyFile()
+int stream2sattictics(char *stream, int index)
 {
-
-    char ch;
-
+    char buf;
     int flag = 0;
-
+    int stream_point = 0;
     int length = 0;
-
-    while ((ch = getchar()) != EOF)
+    while (stream[stream_point] != '\0')
     {
-
-        info.chars++;
-
-        info.size += sizeof(ch); // 字节累加
-
-        if (ch != '\n')
+        buf = stream[stream_point++];
+        info.chars++; // 字符数加1 wc -m
+        if (buf != '\n')
         {
-
-            length++;
+            length++; // 记录当前行的长度 wc -L
         }
-
-        if (ch == '\n')
+        if (buf == '\n')
         {
-
-            info.lines++;
-
+            info.lines++; // 行数加1 wc -l
             if (length > info.max_line_length)
-
-                info.max_line_length = length;
-
+                info.max_line_length = length; // 更新最大长度
             length = 0;
         }
-
-        if (ch == '\t' || ch == ' ' || ch == '\n')
+        if (buf == '\t' || buf == ' ' || buf == '\n')
         {
-
-            flag = 0;
-
+            flag = 0; // 计算单词数 wc -w
             continue;
         }
-
         else
         {
-
             if (flag == 0)
             {
-
-                info.words++;
-
+                info.words++; // 计算单词数 wc -w
                 flag = 1;
             }
         }
+        if (info.words == 1 && length > info.max_line_length)
+            info.max_line_length = length;
     }
 }
 
+void show(char *in_arg, int index)
+{
+    if (in_arg[0] != '-')
+    {
+        return;
+    }
+    char buf;
+    int i = 1;
+    delete_result();
+    while (in_arg[i] != '\0')
+    {
+        buf = in_arg[i];
+        char res[100] = {'\0'};
+        switch (buf)
+        {
+        case 'w':
+            sprintf(res, "words: %d", info.words);
+            break;
+        case 'c':
+            sprintf(res, "bytes: %d", info.size);
+            break;
+        case 'l':
+            sprintf(res, "lines: %d", info.lines);
+            /* code */
+            break;
+        case 'm':
+            sprintf(res, "chars: %d", info.chars);
+            /* code */
+            break;
+        case 'L':
+            sprintf(res, "max word size: %d", info.max_line_length);
+            break;
+        default:
+            delete_result();
+            return;
+        }
+        build_result(res, strlen(res));
+        build_result("\t", strlen("\t"));
+
+        i++;
+    }
+    build_result("\n", strlen("\n"));
+
+    output(index);
+}
 int wc(int index)
 {
+
+    if (arg[index].opts == 2) // 参数和文件名
+    {
+        file2sattictics(arg[index].opt[1], index);
+        show(arg[index].opt[0], index);
+    }
+    else if (arg[index].opts == 1 && arg[index].read_from_pipe == 1) // 参数 pipe
+    {
+        close(TX_FD[PIPE_WRITE]);
+        char buf[1024 * 4] = {'\0'};
+        read(TX_FD[PIPE_READ], buf, 1024 * 4);
+        info.size=strlen(buf);
+        stream2sattictics(buf, index);
+        show(arg[index].opt[0], index);
+    }
+
+    /*
 
     if (arg[index].opts == 2)
     {
@@ -236,5 +260,5 @@ int wc(int index)
 
         printf("%s\n", args[2]);
 
-    return 0;
+    return 0;*/
 }

@@ -24,15 +24,23 @@ unistd.h
 queen.h
 ../inc/queen.h
 
+../inc/error_code.h
+
 ../inc/queen.h
 
-/home/ubuntu/linux_shell/src/output.c
+/home/ubuntu/linux_shell/src/wc.c
 defs.h
 /home/ubuntu/linux_shell/src/defs.h
+dirent.h
+-
+sys/stat.h
+-
+sys/types.h
+-
 unistd.h
 -
 fcntl.h
 -
-limits.h
--
+error_code.h
+/home/ubuntu/linux_shell/src/error_code.h
 

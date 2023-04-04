@@ -90,6 +90,7 @@ CMakeFiles/linux_shell.dir/src/string_helper.c.o: ../inc/queen.h
 CMakeFiles/linux_shell.dir/src/string_helper.c.o: ../src/string_helper.c
 
 CMakeFiles/linux_shell.dir/src/wc.c.o: ../inc/defs.h
+CMakeFiles/linux_shell.dir/src/wc.c.o: ../inc/error_code.h
 CMakeFiles/linux_shell.dir/src/wc.c.o: ../inc/queen.h
 CMakeFiles/linux_shell.dir/src/wc.c.o: ../src/wc.c
 

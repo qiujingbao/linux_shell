@@ -6,13 +6,13 @@ int cat(int index)
 {
     if (arg[index].opts!=1)
         return 0;
-    int fd;
+    int cat_fd;
     delete_result();
-    if ((fd = open(arg[index].opt[0] ,O_RDONLY)) != -1) //read only
+    if ((cat_fd = open(arg[index].opt[0] ,O_RDONLY)) != -1) //read only
     {
         int num=0;
         char buf[1024];
-        while ((num=read(fd,buf,sizeof(char)*1024))!=0)
+        while ((num=read(cat_fd,buf,sizeof(char)*1024))!=0)
         {
             build_result(buf,num);
             memset(buf,'\0',sizeof(char)*1024);

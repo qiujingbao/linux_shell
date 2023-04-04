@@ -91,6 +91,7 @@ CMakeFiles/linux_shell.dir/src/string_helper.c.o
  /home/ubuntu/linux_shell/src/string_helper.c
 CMakeFiles/linux_shell.dir/src/wc.c.o
  ../inc/defs.h
+ ../inc/error_code.h
  ../inc/queen.h
  /home/ubuntu/linux_shell/src/wc.c
 CMakeFiles/linux_shell.dir/src/who.c.o
