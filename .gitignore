@@ -1,8 +1,6 @@
 .vscode/
 !build/Makefile
-build/*.cmake
-build/*.tcl
-build/*out
+build/
 
 
 
