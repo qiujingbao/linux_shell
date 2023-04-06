@@ -1,6 +1,9 @@
 .vscode/
 !build/Makefile
-build/
+build/*.cmake
+build/*.tcl
+build/*out
+
 
 
 # Prerequisites
