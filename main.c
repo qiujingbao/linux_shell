@@ -2,7 +2,7 @@
  * @Author: “qiujingbao” “qiujingbao@dlmu.edu.cn”
  * @Date: 2023-03-29 20:58:22
  * @LastEditors: qiujingbao “qiujingbao@dlmu.edu.cn”
- * @LastEditTime: 2023-04-04 20:46:16
+ * @LastEditTime: 2023-04-06 15:33:25
  * @FilePath: /linux_shell/main.c
  * @Description: 
  * 
@@ -104,7 +104,7 @@ int shell_loop()
                 if (strcmp(arg[j].name, function_name[i]) == 0)
                 {
                     // 匹配成功
-                    // is_muitl_exec(arg_count);                 // 检查是否最后一个参数为&如果是则并发执行
+                    //is_muitl_exec(arg_count);                 // 检查是否最后一个参数为&如果是则并发执行
                     add_command(&history_queen, save_in_buf); // 将当前命令加入历史队列
 
                     exec_function(i, j);

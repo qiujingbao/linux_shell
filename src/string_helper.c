@@ -1,8 +1,8 @@
 /*
  * @Author: “qiujingbao” “qiujingbao@dlmu.edu.cn”
  * @Date: 2023-04-01 12:11:15
- * @LastEditors: “qiujingbao” “qiujingbao@dlmu.edu.cn”
- * @LastEditTime: 2023-04-04 13:21:03
+ * @LastEditors: qiujingbao “qiujingbao@dlmu.edu.cn”
+ * @LastEditTime: 2023-04-06 15:04:50
  * @FilePath: /linux_shell/src/string_helper.c
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -46,6 +46,7 @@ void build_result(char *res, int len)
     }
     else
     {
+        //free on call delete_result
         result_out=(char *)malloc(sizeof(char)*MAX_RESULT_BUF);
         memset(result_out,'\0',sizeof(char)*MAX_RESULT_BUF);
         result_out_count=0;

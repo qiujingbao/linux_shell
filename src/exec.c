@@ -1,3 +1,11 @@
+/*
+ * @Author: qiujingbao “qiujingbao@dlmu.edu.cn”
+ * @Date: 2023-04-04 18:58:35
+ * @LastEditors: qiujingbao “qiujingbao@dlmu.edu.cn”
+ * @LastEditTime: 2023-04-06 16:05:37
+ * @FilePath: /linux_shell/src/exec.c
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 #include "defs.h"
 #include "error_code.h"
 int shell_exec(int index)
@@ -36,31 +44,3 @@ int shell_exec(int index)
         wait(NULL);
     }
 }
-
-
-
-// 执行命令
-/*
-void exec_command(int is_multi,void* func,char *args)
-{
-    int pid = fork();
-    if (pid < 0)
-    {
-        printf("fork 失败！\n");
-        exit(-1);
-    }
-    else if (pid == 0) // child
-    {
-        if (execvp(args[0], args) == -1)
-        {
-            perror("osh>error "); // 打印出错原因
-        }
-        exit(0);
-    }
-    else if (pid > 0) // father
-    {
-        if (is_multi == 0)
-            wait(NULL);
-    }
-}
-*/

@@ -2,7 +2,7 @@
  * @Author: “qiujingbao” “qiujingbao@dlmu.edu.cn”
  * @Date: 2023-04-01 12:00:59
  * @LastEditors: qiujingbao “qiujingbao@dlmu.edu.cn”
- * @LastEditTime: 2023-04-04 20:19:46
+ * @LastEditTime: 2023-04-06 15:00:10
  * @FilePath: /linux_shell/src/output.c
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -46,12 +46,12 @@ void outputpipe() //
 // 输出函数 函数形式建立的功能都需要调用此函数输出
 void output(int index)
 {
-    if (arg[index].remap_out == 1) // 如果重定向了那么就不应该写pipe了
+    if (arg[index].remap_out == 1)
     {
         outputfile(index);
     }
     else if (arg[index].write_to_pipe == 1)
-    { // 如果写pipe就不应该直接输出
+    {
         outputpipe();
     }
     else // 直接输出

@@ -1,6 +1,9 @@
 {
     "files.associations": {
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "error_code.h": "c",
+        "errno.h": "c",
+        "defs.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

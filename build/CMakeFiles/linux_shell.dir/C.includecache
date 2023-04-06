@@ -28,15 +28,9 @@ queen.h
 
 ../inc/queen.h
 
-/home/ubuntu/linux_shell/src/wc.c
+/home/ubuntu/linux_shell/src/cat.c
 defs.h
 /home/ubuntu/linux_shell/src/defs.h
-dirent.h
--
-sys/stat.h
--
-sys/types.h
--
 unistd.h
 -
 fcntl.h

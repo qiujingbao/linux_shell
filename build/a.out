@@ -1,18 +1,16 @@
-/home/ubuntu/linux_shell/build-rwxrwxr-X	1	ubuntu	ubuntu	16744	Tue Apr  4 18:58:35 2023	backend
--rw-rw-r--	1	ubuntu	ubuntu	2552	Tue Apr  4 18:58:35 2023	DartConfiguration.tcl
--rw-rw-r--	1	ubuntu	ubuntu	3633	Tue Apr  4 18:58:35 2023	CPackConfig.cmake
+-rwxrwxr-X	1	ubuntu	ubuntu	16744	Tue Apr  4 18:58:35 2023	backend
+-rw-r--r--	1	ubuntu	ubuntu	2552	Tue Apr  4 18:58:35 2023	DartConfiguration.tcl
+-rw-r--r--	1	ubuntu	ubuntu	3633	Tue Apr  4 18:58:35 2023	CPackConfig.cmake
 drwxrwxr-X	3	ubuntu	ubuntu	4096	Tue Apr  4 18:58:35 2023	Testing
--rw-rw-r--	1	ubuntu	ubuntu	4074	Tue Apr  4 18:58:35 2023	CPackSourceConfig.cmake
+-rw-r--r--	1	ubuntu	ubuntu	4074	Tue Apr  4 18:58:35 2023	CPackSourceConfig.cmake
 -rwxrwxr-X	1	ubuntu	ubuntu	16704	Tue Apr  4 18:58:35 2023	exec_test
--rw-rw-r--	1	ubuntu	ubuntu	34487	Tue Apr  4 18:58:35 2023	Makefile
+-rw-rw-r--	1	ubuntu	ubuntu	34487	Thu Apr  6 14:34:01 2023	Makefile
 -rw-rw-r--	1	ubuntu	ubuntu	1505	Tue Apr  4 18:58:35 2023	cmake_install.cmake
 -rw-rw-r--	1	ubuntu	ubuntu	18126	Tue Apr  4 18:58:35 2023	CMakeCache.txt
--rwxrwxr-X	1	ubuntu	ubuntu	30	Tue Apr  4 18:58:35 2023	a.out
--rwxrwxr-X	1	ubuntu	ubuntu	105496	Tue Apr  4 21:00:14 2023	linux_shell
+-rwxrwxr-X	1	ubuntu	ubuntu	105504	Tue Apr  4 21:04:12 2023	linux_shell
 -rw-rw-r--	1	ubuntu	ubuntu	2	Tue Apr  4 18:58:35 2023	pipe.txt
 -rw-rw-r--	1	ubuntu	ubuntu	267	Tue Apr  4 18:58:35 2023	CTestTestfile.cmake
 drwxrwxr-X	3	ubuntu	ubuntu	4096	Tue Apr  4 18:58:35 2023	.cmake
--rw-rw-r--	1	ubuntu	ubuntu	5625	Tue Apr  4 18:58:35 2023	compile_commands.json
-drwxrwxr-X	32	ubuntu	ubuntu	4096	Tue Apr  4 21:00:14 2023	CMakeFiles
+-rw-rw-r--	1	ubuntu	ubuntu	5625	Thu Apr  6 14:34:01 2023	compile_commands.json
+drwxrwxr-X	32	ubuntu	ubuntu	4096	Thu Apr  6 14:34:01 2023	CMakeFiles
 -rwxrwxr-X	1	ubuntu	ubuntu	16848	Tue Apr  4 18:58:35 2023	shell_pipe
-words: 187	lines: 18	max word size: 95	bytes: 1234	
