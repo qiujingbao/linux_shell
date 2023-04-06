@@ -3,7 +3,8 @@
 build/*.json
 build/*.cmake
 build/*.txt
-build/*/tcl
+build/*.tcl
+build/Makefile
 build/Testing/
 build/CMakeFiles/
 
