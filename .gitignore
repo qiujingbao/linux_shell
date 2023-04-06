@@ -1,6 +1,7 @@
 .vscode/
-build/
 !build/Makefile
+build/
+
 
 # Prerequisites
 *.d
