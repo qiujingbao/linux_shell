@@ -1,3 +1,19 @@
+### 编译运行
+
+仅在linux上
+
+```shell
+ubuntu@VM-8-10-ubuntu:~/linux_shell/build$ cd ..
+ubuntu@VM-8-10-ubuntu:~/linux_shell$ cd build/
+ubuntu@VM-8-10-ubuntu:~/linux_shell/build$ cmake ..
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ubuntu/linux_shell/build
+ubuntu@VM-8-10-ubuntu:~/linux_shell/build$ make
+[100%] Built target linux_shell
+ubuntu@VM-8-10-ubuntu:~/linux_shell/build$ ./linux_shell 
+```
+
 ### 子功能
 
 #### ls命令

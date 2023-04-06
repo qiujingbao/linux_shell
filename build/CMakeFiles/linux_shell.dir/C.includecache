@@ -28,13 +28,13 @@ queen.h
 
 ../inc/queen.h
 
-/home/ubuntu/linux_shell/src/cat.c
-defs.h
-/home/ubuntu/linux_shell/src/defs.h
-unistd.h
--
-fcntl.h
--
+/home/ubuntu/linux_shell/src/error.c
 error_code.h
 /home/ubuntu/linux_shell/src/error_code.h
+defs.h
+/home/ubuntu/linux_shell/src/defs.h
+error.h
+-
+errno.h
+-
 
