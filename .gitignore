@@ -1,6 +1,12 @@
 .vscode/
 !build/Makefile
-build/
+build/*.json
+build/*.cmake
+build/*.txt
+build/*/tcl
+build/Testing/
+build/CMakeFiles/
+
 
 
 
