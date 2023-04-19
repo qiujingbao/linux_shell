@@ -1,24 +1,14 @@
-/*
- * @Author: “qiujingbao” “qiujingbao@dlmu.edu.cn”
- * @Date: 2023-03-29 20:58:22
- * @LastEditors: qiujingbao “qiujingbao@dlmu.edu.cn”
- * @LastEditTime: 2023-04-06 15:33:25
- * @FilePath: /linux_shell/main.c
- * @Description: 
- * 
- * Copyright (c) 2023 by qiujingbao, All Rights Reserved. 
- */
-
 #include "defs.h"
 #include "error_code.h"
+
 // motify
 // 为了更好支持多管道，参数从字符串更改为结构体
 
 // 函数指针数组 保存可执行的命令
-int (*functions[])(int) = {ls, echo, cd, pwd, date, whoami, cat, shell_chmod, shell_rmdir, shell_mkdir, rm, who, shell_kill, shell_exit, history, wc, shell_exec};
+int (*functions[])(int) = {ls, echo, cd, pwd, date, whoami, cat, shell_chmod, shell_rmdir, shell_mkdir, rm, who, shell_kill, shell_exit, history, wc, shell_exec,help};
 
 // 将参数设为全局变量
-static char *function_name[] = {"ls", "echo", "cd", "pwd", "date", "whoami", "cat", "chmod", "rmdir", "mkdir", "rm", "who", "kill", "exit", "!!", "wc", "exec", "help", "!"};
+static char *function_name[] = {"ls", "echo", "cd", "pwd", "date", "whoami", "cat", "chmod", "rmdir", "mkdir", "rm", "who", "kill", "exit", "!!", "wc", "exec", "help"};
 
 /**
  * @description: 读取用户输入 根据 ‘|‘ 分割成不同指令 根据 空格 分割参数

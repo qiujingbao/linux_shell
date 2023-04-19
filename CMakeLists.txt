@@ -35,6 +35,7 @@ add_executable(linux_shell
             src/output.c
             src/string_helper.c
             src/shell_pipe.c
+            src/help.c
 )
 
 include(CPack)

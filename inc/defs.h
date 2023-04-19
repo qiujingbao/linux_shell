@@ -105,7 +105,7 @@ int who(int index);
 int wc(int index);
 int whoami(int index);
 int shell_exec(int index);
-
+int help(int index);
 void exec_function(int i, int j);
 int init_pipe_process();
 void output(int index);

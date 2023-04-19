@@ -3,7 +3,6 @@
 仅在linux上
 
 ```shell
-ubuntu@VM-8-10-ubuntu:~/linux_shell/build$ cd ..
 ubuntu@VM-8-10-ubuntu:~/linux_shell$ cd build/
 ubuntu@VM-8-10-ubuntu:~/linux_shell/build$ cmake ..
 -- Configuring done
